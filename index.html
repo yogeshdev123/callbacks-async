@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .skip{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid ;
+            width: 55px;
+            height: 30px;
+            text-align: center;
+            background-color: red;
+            position: absolute;
+          cursor: pointer;
+            bottom: 5px;
+            right: 0px;
+        }
+        #main2{
+            position: relative;
+            width: 430px;
+            border: solid;
+        }
+        
+        
+    </style>
+ </head>
+ <body>
+    
+
+<div id="main2">
+    <video src="./SampleVideo_1280x720_2mb.mp4" id="vid"  autoplay muted height="240" style="width: 100%;" loop></video>
+    <div class="skip" onclick="clock()">
+        in 00s
+    </div>
+
+</div>
+<script>
+    x=12
+    let ski=document.getElementsByClassName("skip");
+    let mai2=document.getElementById("vid")
+   
+    let intra=setInterval(()=>{
+        if(x>5){
+            ski[0].innerHTML=`in ${x}s`;
+            
+        }
+        else if(x==0){
+            ski[0].style.display="none";
+            mai2.setAttribute("src","./cute_wild_deer_grazing_in_nature_6892279.mp4")
+            mai2.setAttribute("controls","")
+            clearInterval(intra)
+        }
+        else{
+            ski[0].innerHTML=`Skip >>`;
+        }
+        x--;
+    },1000)
+    function clock(){
+        if(x<5){
+            ski[0].style.display="none"
+            mai2.setAttribute("controls","")
+            mai2.setAttribute("src","./cute_wild_deer_grazing_in_nature_6892279.mp4");
+            clearInterval(intra);
+        }
+    }
+</script>
+    
+ </body>
+ </html>
